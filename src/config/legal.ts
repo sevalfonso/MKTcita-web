@@ -1,0 +1,15 @@
+export const LEGAL = {
+  NOMBRE_LEGAL:        "MyMarketing.es",
+  CIF:                 "[CIF]",
+  DOMICILIO:           "[CALLE Y NÚMERO]",
+  MUNICIPIO:           "Madrid",
+  CP:                  "[CP]",
+  PROVINCIA:           "Madrid",
+  REGISTRO_MERCANTIL:  "[DATOS_REGISTRO_MERCANTIL]",
+  EMAIL_PRIVACIDAD:    "privacidad@mymarketing.es",
+  EMAIL_LEGAL:         "legal@mymarketing.es",
+  EMAIL_CONTACTO:      "hola@mymarketing.es",
+  EMAIL_DPD:           "dpd@mymarketing.es",
+  TELEFONO:            "[TELEFONO_CONTACTO]",
+  ANNO_FUNDACION:      "2025",
+}

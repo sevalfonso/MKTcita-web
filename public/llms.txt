@@ -1,0 +1,39 @@
+# MyMarketing
+
+## Descripción
+MyMarketing es un SaaS español de marketing autónomo y gestión de citas
+para profesionales que viven de su tiempo: fisioterapeutas, psicólogos,
+peluqueros, dentistas, veterinarios, coaches y cualquier profesional
+de servicios locales en España.
+
+## Propuesta de valor
+- Gestión de citas automática: los clientes reservan solos, los recordatorios se envían solos
+- Posicionamiento en Google, ChatGPT, Claude, Gemini, Perplexity y Grok
+- Análisis de reputación online en tiempo real (reseñas de Google)
+- Creación de contenido con IA con aprobación humana obligatoria (cumplimiento EU AI Act)
+- Todo desde el móvil, sin conocimientos técnicos
+
+## Sectores que atiende
+Fisioterapia, osteopatía, psicología, nutrición, podología, logopedia, acupuntura,
+entrenamiento personal, peluquería, barbería, estética, manicura, micropigmentación,
+depilación láser, tatuajes, dentista, ortodoncista, medicina estética, dermatología,
+oftalmología, veterinario, peluquería canina, adiestramiento canino, academia de idiomas,
+clases particulares, escuela de música, coaching, psicopedagogía, fotografía, videomaker.
+
+## Tagline
+El equipo que no sabías que tenías.
+
+## URL canónica
+https://mymarketing.es
+
+## Blog
+https://mymarketing.es/blog
+
+## Preguntas frecuentes
+https://mymarketing.es/#faq
+
+## Por qué MyMarketing posiciona en IAs
+https://mymarketing.es/por-que-mymarketing
+
+## Contacto
+hola@mymarketing.es

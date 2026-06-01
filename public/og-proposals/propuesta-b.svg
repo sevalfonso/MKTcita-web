@@ -1,0 +1,55 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- PROPUESTA B — Dark, impacto máximo -->
+  <rect width="1200" height="630" fill="#0D1117"/>
+
+  <!-- Glow sutil detrás del isotipo -->
+  <ellipse cx="600" cy="185" rx="260" ry="150" fill="#4285F4" opacity="0.06"/>
+
+  <!-- Isotipo centrado -->
+  <g transform="translate(438, 48) scale(2.2)">
+    <rect x="8"  y="12" width="88" height="68" rx="22" fill="#4285F4" opacity="0.18"/>
+    <rect x="0"  y="0"  width="88" height="68" rx="22" fill="#4285F4"/>
+    <polygon points="14,68 4,94 38,68" fill="#4285F4"/>
+    <polygon points="50,10 36,38 48,38 42,58 60,28 48,28 56,10" fill="#FFFFFF"/>
+    <rect x="98"  y="0"  width="64" height="50" rx="15" fill="#EA4335"/>
+    <polygon points="110,50 100,68 132,50" fill="#EA4335"/>
+    <rect x="112" y="32" width="9"  height="14" rx="2.5" fill="#4285F4"/>
+    <rect x="125" y="24" width="9"  height="22" rx="2.5" fill="#34A853"/>
+    <rect x="138" y="14" width="9"  height="32" rx="2.5" fill="#FBBC05"/>
+    <circle cx="176" cy="24" r="10" fill="#EA4335" opacity="0.25"/>
+    <circle cx="176" cy="24" r="6"  fill="#EA4335" opacity="0.6"/>
+  </g>
+
+  <!-- Headline principal -->
+  <text x="600" y="345" text-anchor="middle" font-family="'Arial Black','Arial',sans-serif" font-weight="900" font-size="52" fill="#FFFFFF">Tu competencia ya aparece en la IA.</text>
+  <text x="600" y="405" text-anchor="middle" font-family="'Arial Black','Arial',sans-serif" font-weight="900" font-size="52" fill="#4285F4">¿Y tú?</text>
+
+  <!-- Tagline -->
+  <text x="600" y="452" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="300" font-size="15" letter-spacing="4" fill="#444D5C">EL EQUIPO QUE NO SABÍAS QUE TENÍAS</text>
+
+  <!-- Píldoras de IAs — centradas: span total ~596px, inicio en 302 -->
+  <g transform="translate(0, 476)">
+    <rect x="302" y="0" width="100" height="28" rx="14" fill="#FFFFFF" opacity="0.07"/>
+    <text x="352" y="19" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#FFFFFF" opacity="0.55">ChatGPT</text>
+
+    <rect x="414" y="0" width="80" height="28" rx="14" fill="#FFFFFF" opacity="0.07"/>
+    <text x="454" y="19" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#FFFFFF" opacity="0.55">Claude</text>
+
+    <rect x="506" y="0" width="88" height="28" rx="14" fill="#FFFFFF" opacity="0.07"/>
+    <text x="550" y="19" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#FFFFFF" opacity="0.55">Gemini</text>
+
+    <rect x="606" y="0" width="104" height="28" rx="14" fill="#FFFFFF" opacity="0.07"/>
+    <text x="658" y="19" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#FFFFFF" opacity="0.55">Perplexity</text>
+
+    <rect x="722" y="0" width="64" height="28" rx="14" fill="#FFFFFF" opacity="0.07"/>
+    <text x="754" y="19" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#FFFFFF" opacity="0.55">Grok</text>
+
+    <rect x="798" y="0" width="100" height="28" rx="14" fill="#FFFFFF" opacity="0.07"/>
+    <text x="848" y="19" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#FFFFFF" opacity="0.55">y más IAs</text>
+  </g>
+
+  <!-- Wordmark MyMarketing.es centrado en la base -->
+  <text x="600" y="585" text-anchor="middle" font-family="'Arial Black','Arial',sans-serif" font-weight="900" font-size="28">
+    <tspan fill="#FFFFFF">My</tspan><tspan fill="#4285F4">M</tspan><tspan fill="#34A853">a</tspan><tspan fill="#FBBC05">r</tspan><tspan fill="#EA4335">k</tspan><tspan fill="#4285F4">e</tspan><tspan fill="#34A853">t</tspan><tspan fill="#FBBC05">i</tspan><tspan fill="#EA4335">n</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#FFFFFF">.es</tspan>
+  </text>
+</svg>

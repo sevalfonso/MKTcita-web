@@ -1,0 +1,44 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- PROPUESTA A — Blanco limpio con acento inferior -->
+  <rect width="1200" height="630" fill="#FFFFFF"/>
+
+  <!-- Barra inferior de color -->
+  <rect x="0" y="594" width="1200" height="36" fill="#4285F4"/>
+  <!-- Puntos de color Google en la barra -->
+  <rect x="0"   y="594" width="300" height="36" fill="#4285F4"/>
+  <rect x="300" y="594" width="300" height="36" fill="#34A853"/>
+  <rect x="600" y="594" width="300" height="36" fill="#FBBC05"/>
+  <rect x="900" y="594" width="300" height="36" fill="#EA4335"/>
+
+  <!-- Isotipo centrado arriba -->
+  <g transform="translate(420, 80) scale(1.8)">
+    <rect x="8"  y="12" width="88" height="68" rx="22" fill="#4285F4" opacity="0.18"/>
+    <rect x="0"  y="0"  width="88" height="68" rx="22" fill="#4285F4"/>
+    <polygon points="14,68 4,94 38,68" fill="#4285F4"/>
+    <polygon points="50,10 36,38 48,38 42,58 60,28 48,28 56,10" fill="#FFFFFF"/>
+    <rect x="98"  y="0"  width="64" height="50" rx="15" fill="#EA4335"/>
+    <polygon points="110,50 100,68 132,50" fill="#EA4335"/>
+    <rect x="112" y="32" width="9"  height="14" rx="2.5" fill="#4285F4"/>
+    <rect x="125" y="24" width="9"  height="22" rx="2.5" fill="#34A853"/>
+    <rect x="138" y="14" width="9"  height="32" rx="2.5" fill="#FBBC05"/>
+    <circle cx="176" cy="24" r="10" fill="#EA4335" opacity="0.18"/>
+    <circle cx="176" cy="24" r="6"  fill="#EA4335" opacity="0.5"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="600" y="310" text-anchor="middle" font-family="'Arial Black','Arial',sans-serif" font-weight="900" font-size="72">
+    <tspan fill="#000000">My</tspan><tspan fill="#4285F4">M</tspan><tspan fill="#34A853">a</tspan><tspan fill="#FBBC05">r</tspan><tspan fill="#EA4335">k</tspan><tspan fill="#4285F4">e</tspan><tspan fill="#34A853">t</tspan><tspan fill="#FBBC05">i</tspan><tspan fill="#EA4335">n</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#000000">.es</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="600" y="360" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="300" font-size="18" letter-spacing="4" fill="#BBBBBB">EL EQUIPO QUE NO SABÍAS QUE TENÍAS</text>
+
+  <!-- Separador -->
+  <line x1="480" y1="390" x2="720" y2="390" stroke="#EEEEEE" stroke-width="1.5"/>
+
+  <!-- Propuesta de valor -->
+  <text x="600" y="430" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="20" fill="#444D5C">Gestión de citas · Reputación en Google · Visibilidad en la IA</text>
+
+  <!-- URL -->
+  <text x="600" y="572" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="16" fill="#AAAAAA">mymarketing.es</text>
+</svg>

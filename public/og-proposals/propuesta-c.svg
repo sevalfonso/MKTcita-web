@@ -1,0 +1,70 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- PROPUESTA C — Split: izquierda blanca / derecha azul — texto corregido -->
+
+  <!-- Fondo izquierdo blanco -->
+  <rect x="0" y="0" width="1200" height="630" fill="#FFFFFF"/>
+  <!-- Fondo derecho azul (sin diagonal para evitar text overflow) -->
+  <rect x="520" y="0" width="680" height="630" fill="#4285F4"/>
+
+  <!-- Línea divisora limpia con borde de sombra -->
+  <rect x="518" y="0" width="4" height="630" fill="#4285F4" opacity="0.3"/>
+
+  <!-- Isotipo lado izquierdo, bien separado del borde -->
+  <g transform="translate(60, 90) scale(1.7)">
+    <rect x="8"  y="12" width="88" height="68" rx="22" fill="#4285F4" opacity="0.18"/>
+    <rect x="0"  y="0"  width="88" height="68" rx="22" fill="#4285F4"/>
+    <polygon points="14,68 4,94 38,68" fill="#4285F4"/>
+    <polygon points="50,10 36,38 48,38 42,58 60,28 48,28 56,10" fill="#FFFFFF"/>
+    <rect x="98"  y="0"  width="64" height="50" rx="15" fill="#EA4335"/>
+    <polygon points="110,50 100,68 132,50" fill="#EA4335"/>
+    <rect x="112" y="32" width="9"  height="14" rx="2.5" fill="#4285F4"/>
+    <rect x="125" y="24" width="9"  height="22" rx="2.5" fill="#34A853"/>
+    <rect x="138" y="14" width="9"  height="32" rx="2.5" fill="#FBBC05"/>
+    <circle cx="176" cy="24" r="10" fill="#EA4335" opacity="0.18"/>
+    <circle cx="176" cy="24" r="6"  fill="#EA4335" opacity="0.5"/>
+  </g>
+
+  <!-- Wordmark izquierda, alineado con isotipo -->
+  <text x="60" y="340" font-family="'Arial Black','Arial',sans-serif" font-weight="900" font-size="48">
+    <tspan fill="#000000">My</tspan><tspan fill="#4285F4">M</tspan><tspan fill="#34A853">a</tspan><tspan fill="#FBBC05">r</tspan><tspan fill="#EA4335">k</tspan><tspan fill="#4285F4">e</tspan><tspan fill="#34A853">t</tspan><tspan fill="#FBBC05">i</tspan><tspan fill="#EA4335">n</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#000000">.es</tspan>
+  </text>
+
+  <!-- Tagline izquierda — subido el contraste usando #888 en lugar de #BBB -->
+  <text x="60" y="378" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="300" font-size="13" letter-spacing="3" fill="#888888">EL EQUIPO QUE NO SABÍAS QUE TENÍAS</text>
+
+  <!-- Separador horizontal izquierda -->
+  <line x1="60" y1="410" x2="460" y2="410" stroke="#EEEEEE" stroke-width="1.5"/>
+
+  <!-- Texto descriptivo izquierda sobre fondo blanco — color oscuro para visibilidad -->
+  <text x="60" y="445" font-family="'Helvetica Neue',Arial,sans-serif" font-size="16" fill="#444D5C">Para cualquier profesional que viva</text>
+  <text x="60" y="468" font-family="'Helvetica Neue',Arial,sans-serif" font-size="16" fill="#444D5C">de las citas con sus clientes.</text>
+
+  <!-- URL izquierda -->
+  <text x="60" y="590" font-family="'Helvetica Neue',Arial,sans-serif" font-size="14" fill="#AAAAAA">mymarketing.es</text>
+
+  <!-- ── LADO DERECHO — todo el contenido bien dentro del área azul (x > 560) ── -->
+
+  <!-- Headline derecha — alineado a la izquierda del panel azul -->
+  <text x="576" y="140" font-family="'Arial Black','Arial',sans-serif" font-weight="900" font-size="36" fill="#FFFFFF">Marketing autónomo</text>
+  <text x="576" y="185" font-family="'Arial Black','Arial',sans-serif" font-weight="900" font-size="36" fill="#FFFFFF">para profesionales</text>
+  <text x="576" y="230" font-family="'Arial Black','Arial',sans-serif" font-weight="900" font-size="36" fill="#FFFFFF">que viven de su tiempo</text>
+
+  <!-- Separador derecha -->
+  <line x1="576" y1="256" x2="1140" y2="256" stroke="#FFFFFF" stroke-width="1" opacity="0.25"/>
+
+  <!-- Lista de beneficios — alineada al panel azul, texto blanco bien visible -->
+  <text x="576" y="300" font-family="'Helvetica Neue',Arial,sans-serif" font-size="20" fill="#FFFFFF">✓  Reservas online 24 horas</text>
+  <text x="576" y="338" font-family="'Helvetica Neue',Arial,sans-serif" font-size="20" fill="#FFFFFF">✓  Reputación en Google</text>
+  <text x="576" y="376" font-family="'Helvetica Neue',Arial,sans-serif" font-size="20" fill="#FFFFFF">✓  Visible en ChatGPT y Gemini</text>
+  <text x="576" y="414" font-family="'Helvetica Neue',Arial,sans-serif" font-size="20" fill="#FFFFFF">✓  Resumen semanal en el móvil</text>
+
+  <!-- Separador -->
+  <line x1="576" y1="440" x2="1140" y2="440" stroke="#FFFFFF" stroke-width="1" opacity="0.25"/>
+
+  <!-- CTA badge derecha -->
+  <rect x="576" y="462" width="220" height="52" rx="26" fill="#FFFFFF"/>
+  <text x="686" y="495" text-anchor="middle" font-family="'Arial Black','Arial',sans-serif" font-weight="900" font-size="17" fill="#4285F4">15 días gratis</text>
+
+  <!-- Nota "sin tarjeta" -->
+  <text x="576" y="545" font-family="'Helvetica Neue',Arial,sans-serif" font-size="14" fill="#FFFFFF" opacity="0.6">Sin tarjeta · Sin permanencia · Sin compromiso</text>
+</svg>
