@@ -6,11 +6,10 @@ import { Logo } from '../brand/Logo'
 import { X, Menu } from 'lucide-react'
 
 const NAV_LINKS = [
-  { href: '#como-funciona', label: 'Cómo funciona' },
-  { href: '#sectores',      label: 'Sectores' },
-  { href: '#precios',       label: 'Precios' },
-  { href: '/blog',          label: 'Blog' },
-  { href: '#contacto',      label: 'Contacto' },
+  { href: '#como-funciona',   label: 'Cómo funciona' },
+  { href: '/precios',         label: 'Precios' },
+  { href: '/blog',            label: 'Blog' },
+  { href: '/sobre-nosotros',  label: 'Nosotros' },
 ]
 
 export function Navbar() {

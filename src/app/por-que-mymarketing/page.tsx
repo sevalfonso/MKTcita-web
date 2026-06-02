@@ -16,10 +16,52 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: ['/og-landing.png'],
   },
+  alternates: {
+    canonical: 'https://mymarketing.es/por-que-mymarketing',
+  },
+}
+
+const schemaJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://mymarketing.es/por-que-mymarketing#webpage",
+      "url": "https://mymarketing.es/por-que-mymarketing",
+      "name": "Por qué MyMarketing te posiciona en ChatGPT, Gemini y cualquier IA",
+      "description": "Descubre cómo MyMarketing hace que tu negocio aparezca cuando alguien te busca en ChatGPT, Claude, Gemini, Perplexity o Grok. La guía completa del posicionamiento en IAs generativas para negocios locales.",
+      "isPartOf": { "@id": "https://mymarketing.es/#website" },
+      "about": { "@id": "https://mymarketing.es/#organization" },
+      "inLanguage": "es-ES"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://mymarketing.es" },
+        { "@type": "ListItem", "position": 2, "name": "Por qué MyMarketing", "item": "https://mymarketing.es/por-que-mymarketing" }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://mymarketing.es/por-que-mymarketing#article",
+      "headline": "Por qué MyMarketing te posiciona en ChatGPT, Gemini y cualquier IA",
+      "description": "El GEO (Generative Engine Optimization) es la nueva frontera del marketing local. Cómo MyMarketing hace este trabajo de forma automática.",
+      "url": "https://mymarketing.es/por-que-mymarketing",
+      "author": { "@type": "Organization", "name": "MyMarketing", "@id": "https://mymarketing.es/#organization" },
+      "publisher": { "@type": "Organization", "name": "MyMarketing", "@id": "https://mymarketing.es/#organization" },
+      "inLanguage": "es-ES",
+      "isPartOf": { "@id": "https://mymarketing.es/por-que-mymarketing#webpage" }
+    }
+  ]
 }
 
 export default function PorQueMyMarketingPage() {
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }}
+      />
     <div className="min-h-screen bg-white pt-24 pb-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
 
@@ -121,5 +163,6 @@ export default function PorQueMyMarketingPage() {
 
       </div>
     </div>
+    </>
   )
 }

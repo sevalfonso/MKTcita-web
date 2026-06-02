@@ -64,12 +64,12 @@ El plan Pro añade capacidades avanzadas para negocios con mayor volumen de cita
 Durante el trial tienes acceso completo para que puedas evaluar qué nivel necesitas antes de decidir.`,
   },
   {
-    question: "¿Necesito tener una ficha en Google Mi Negocio?",
+    question: "¿Necesito tener un perfil en Google Business Profile?",
     answer: `Es muy recomendable, aunque no es obligatorio para empezar.
 
-Sin la ficha de Google, los agentes de IA de MyMarketing que gestionan tu reputación y tu posicionamiento en Google trabajan con capacidad reducida. Con la ficha conectada, pueden analizar tus reseñas, detectar las negativas, sugerirte cómo responder y publicar contenido directamente en tu perfil.
+Sin el perfil de Google Business Profile, los agentes de IA de MyMarketing que gestionan tu reputación y tu posicionamiento en Google trabajan con capacidad reducida. Con el perfil conectado, pueden analizar tus reseñas, detectar las negativas, sugerirte cómo responder y publicar contenido directamente en tu perfil.
 
-Si aún no tienes ficha de Google, MyMarketing te guía paso a paso para crearla y conectarla. Es gratis y se hace en unos minutos.`,
+Si aún no tienes perfil en Google Business Profile, MyMarketing te guía paso a paso para crearlo y conectarlo. Es gratis y se hace en unos minutos.`,
   },
   {
     question: "¿Cuánto tiempo tengo que dedicarle?",

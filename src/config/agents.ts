@@ -18,7 +18,7 @@ export const AGENTS = [
   {
     emoji: '✍️',
     name: 'El Creador de Contenido',
-    description: 'Escribe posts para tu ficha de Google y tu blog cada semana. Contenido optimizado para que aparezcas cuando alguien te busca en Google, ChatGPT, Claude, Gemini, Perplexity, Grok o cualquier IA.',
+    description: 'Escribe posts para tu perfil de Google Business Profile y tu blog cada semana. Contenido optimizado para que aparezcas cuando alguien te busca en Google, ChatGPT, Claude, Gemini, Perplexity, Grok o cualquier IA.',
     frequency: 'Cada semana',
     color: 'brand-green' as const,
     accentColor: '#34A853',

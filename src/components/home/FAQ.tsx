@@ -56,6 +56,16 @@ export function FAQ() {
             )
           })}
         </div>
+
+        {/* FAQ contenido para crawlers y LLMs — visualmente oculto pero indexable */}
+        <div className="sr-only" aria-hidden="true">
+          {faqData.map(({ question, answer }, i) => (
+            <div key={i}>
+              <h3>{question}</h3>
+              <p>{answer}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

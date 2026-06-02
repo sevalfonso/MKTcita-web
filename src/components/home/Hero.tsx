@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export function Hero() {
   return (
@@ -52,11 +53,16 @@ export function Hero() {
         {/* Nota sin tarjeta */}
         <p className="text-xs text-neutral-400 mt-4">Sin tarjeta de crédito · Sin compromiso</p>
 
-        {/* Mockup placeholder */}
-        <div className="mt-16 mx-auto w-56 sm:w-64 h-[480px] sm:h-[540px] rounded-3xl bg-neutral-100 border border-neutral-200 shadow-xl flex items-center justify-center">
-          <span className="text-neutral-400 text-xs text-center px-6">
-            Mockup PWA<br />app.mymarketing.es
-          </span>
+        {/* App screenshot */}
+        <div className="mt-16 mx-auto w-56 sm:w-64 rounded-3xl overflow-hidden border border-neutral-200 shadow-xl">
+          <Image
+            src="/app-screenshot.png"
+            alt="App MyMarketing — pantalla de configuración del negocio"
+            width={390}
+            height={429}
+            className="w-full h-auto"
+            priority
+          />
         </div>
       </div>
     </section>

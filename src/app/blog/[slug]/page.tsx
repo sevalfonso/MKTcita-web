@@ -2,9 +2,13 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { getPostBySlug, getAllSlugs, urlFor } from '@/lib/sanity'
+import { getPostBySlug, getPosts, getAllSlugs, urlFor } from '@/lib/sanity'
 import { SECTORS } from '@/config/sectors'
 import { PortableText } from '@portabletext/react'
+import { TableOfContents } from '@/components/blog/TableOfContents'
+import { AuthorBio } from '@/components/blog/AuthorBio'
+import { ShareButtons } from '@/components/blog/ShareButtons'
+import { RelatedPosts } from '@/components/blog/RelatedPosts'
 
 export const revalidate = 3600
 
@@ -34,15 +38,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.seoDescription || post.excerpt,
       type: 'article',
       publishedTime: post.publishedAt,
-      authors: [post.author],
+      modifiedTime: new Date().toISOString(),
+      authors: [`${siteUrl}`],
       images: [{ url: ogImageUrl, width: 1200, height: 630, alt: post.title }],
     },
     alternates: { canonical: `${siteUrl}/blog/${params.slug}` },
   }
 }
 
+type PortableTextBlock = {
+  _type: string
+  style?: string
+  children?: Array<{ _type: string; text: string }>
+}
+
+function slugifyHeading(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+}
+
 export default async function PostPage({ params }: Props) {
-  const post = await getPostBySlug(params.slug)
+  const [post, allPosts] = await Promise.all([
+    getPostBySlug(params.slug),
+    getPosts(),
+  ])
   if (!post) notFound()
 
   const sector = SECTORS.find((s) => s.id === post.sector)
@@ -52,19 +76,73 @@ export default async function PostPage({ params }: Props) {
     year: 'numeric', month: 'long', day: 'numeric',
   })
 
+  // Extraer H2s del cuerpo Portable Text para el TOC
+  const tocItems = (post.body as PortableTextBlock[] ?? [])
+    .filter((b) => b._type === 'block' && b.style === 'h2')
+    .map((b) => {
+      const text = b.children?.map((c) => c.text).join('') ?? ''
+      return { id: slugifyHeading(text), text }
+    })
+    .filter((h) => h.text.length > 0)
+
+  // Custom PortableText components para añadir id a los H2
+  const portableComponents = {
+    block: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      h2: ({ children, value }: { children?: React.ReactNode; value: any }) => {
+        const text = (value.children ?? [])
+          .map((c: { text?: string }) => c.text ?? '')
+          .join('')
+        return <h2 id={slugifyHeading(text)}>{children}</h2>
+      },
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } as any
+
+  // Posts relacionados: excluir el actual, máximo 2
+  // En runtime p.slug es string (la query GROQ proyecta slug.current)
+  const currentSlug = params.slug
+  const relatedPosts = allPosts
+    .filter((p) => (p.slug as unknown as string) !== currentSlug)
+    .slice(0, 2)
+    .map((p) => {
+      const s = SECTORS.find((sec) => sec.id === p.sector)
+      return {
+        slug: p.slug as unknown as string,
+        title: p.title,
+        sector: s?.label ?? p.sector,
+        sectorEmoji: s?.icon ?? '',
+        readingTime: p.readingTime,
+      }
+    })
+
   const schemaArticle = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.excerpt,
-    author: { '@type': 'Organization', name: post.author },
-    datePublished: post.publishedAt,
-    publisher: {
-      '@type': 'Organization',
-      name: 'MyMarketing',
-      url: siteUrl,
-    },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `${siteUrl}/blog/${params.slug}` },
+    '@graph': [
+      {
+        '@type': 'Article',
+        '@id': `${siteUrl}/blog/${params.slug}#article`,
+        headline: post.title,
+        description: post.excerpt,
+        author: { '@type': 'Organization', name: post.author },
+        datePublished: post.publishedAt,
+        dateModified: new Date().toISOString(),
+        publisher: {
+          '@type': 'Organization',
+          name: 'MyMarketing',
+          '@id': `${siteUrl}/#organization`,
+        },
+        mainEntityOfPage: { '@type': 'WebPage', '@id': `${siteUrl}/blog/${params.slug}` },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Inicio', item: siteUrl },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteUrl}/blog` },
+          { '@type': 'ListItem', position: 3, name: post.title, item: `${siteUrl}/blog/${params.slug}` },
+        ],
+      },
+    ],
   }
 
   return (
@@ -126,6 +204,9 @@ export default async function PostPage({ params }: Props) {
             </div>
           )}
 
+          {/* Tabla de contenidos */}
+          <TableOfContents headings={tocItems} />
+
           {/* CTA inline a mitad del artículo */}
           <div className="my-10 p-6 rounded-3xl bg-neutral-50 border border-neutral-100 text-center">
             <p className="font-heading font-semibold text-dark mb-2 text-lg">
@@ -145,9 +226,24 @@ export default async function PostPage({ params }: Props) {
           {/* Contenido */}
           {post.body && (
             <div className="prose prose-neutral max-w-none prose-headings:font-heading prose-headings:text-dark prose-a:text-brand-blue prose-strong:text-dark">
-              <PortableText value={post.body as import('@portabletext/types').PortableTextBlock[]} />
+              <PortableText
+                value={post.body as import('@portabletext/types').PortableTextBlock[]}
+                components={portableComponents}
+              />
             </div>
           )}
+
+          {/* Bio del autor */}
+          <AuthorBio />
+
+          {/* Botones de compartir */}
+          <ShareButtons
+            url={`${siteUrl}/blog/${params.slug}`}
+            title={post.title}
+          />
+
+          {/* Artículos relacionados */}
+          <RelatedPosts posts={relatedPosts} />
 
           {/* CTA final */}
           <div className="mt-16 p-8 rounded-3xl text-center" style={{ background: '#0D1117' }}>

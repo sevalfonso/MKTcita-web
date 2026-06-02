@@ -32,13 +32,16 @@ export const metadata: Metadata = {
   description:
     'SaaS de marketing autónomo y gestión de citas para profesionales de servicios locales en España. Aparece en Google, ChatGPT, Gemini y cualquier IA.',
   keywords: [
-    'marketing automatico profesionales',
-    'gestion citas online',
+    'marketing automático profesionales',
+    'gestión citas online',
     'aparecer en ChatGPT',
     'posicionamiento IA local',
     'fisioterapia marketing',
-    'peluqueria agenda online',
+    'peluquería agenda online',
+    'SEO para negocios locales',
+    'GEO generative engine optimization',
   ],
+  themeColor: '#3B5BFC',
   openGraph: {
     type: 'website',
     locale: 'es_ES',
@@ -56,7 +59,13 @@ export const metadata: Metadata = {
     images: ['/og-default.png'],
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: siteUrl },
+  alternates: {
+    canonical: 'https://mymarketing.es/',
+    languages: {
+      'es': 'https://mymarketing.es/',
+      'x-default': 'https://mymarketing.es/',
+    },
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -64,7 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es" className={`${plusJakarta.variable} ${inter.variable}`}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       </head>
       <body className="font-body antialiased text-dark bg-white">
         <Navbar />

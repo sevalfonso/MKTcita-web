@@ -4,6 +4,7 @@ import { HowItWorks } from '@/components/home/HowItWorks'
 import { AIAgents } from '@/components/home/AIAgents'
 import { BeforeAfter } from '@/components/home/BeforeAfter'
 import { Pricing } from '@/components/home/Pricing'
+import { Testimonials } from '@/components/home/Testimonials'
 import { FAQ } from '@/components/home/FAQ'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { FAQ as faqData } from '@/config/faq'
@@ -17,13 +18,31 @@ const schemaOrg = {
       '@type': 'Organization',
       '@id': `${siteUrl}/#organization`,
       name: 'MyMarketing',
+      alternateName: 'MyMarketing.es',
       url: siteUrl,
-      logo: { '@type': 'ImageObject', url: `${siteUrl}/favicon.svg` },
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/favicon.svg`,
+        width: 512,
+        height: 512,
+      },
+      description: 'SaaS de marketing autónomo y gestión de citas para profesionales de servicios locales en España. Cuatro agentes de inteligencia artificial que trabajan de forma autónoma para que tu negocio sea visible en Google, ChatGPT, Gemini, Claude, Perplexity y Grok.',
+      foundingDate: '2025',
       contactPoint: {
         '@type': 'ContactPoint',
         email: 'hola@mymarketing.es',
         contactType: 'customer service',
         availableLanguage: 'Spanish',
+        areaServed: 'ES',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'ES',
+        addressLocality: 'España',
+      },
+      areaServed: {
+        '@type': 'Country',
+        name: 'España',
       },
     },
     {
@@ -71,6 +90,7 @@ export default function HomePage() {
       <AIAgents />
       <BeforeAfter />
       <Pricing />
+      <Testimonials />
       <FAQ />
       <FinalCTA />
     </>

@@ -5,6 +5,22 @@ import { BrandName } from '@/components/brand/BrandName'
 
 export const revalidate = 3600
 
+const schemaJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://mymarketing.es/blog#webpage",
+  "url": "https://mymarketing.es/blog",
+  "name": "Blog — Consejos de marketing para profesionales | MyMarketing",
+  "description": "Artículos prácticos para fisioterapeutas, psicólogos, peluquerías, dentistas, veterinarios y cualquier profesional que quiera crecer con la IA.",
+  "isPartOf": { "@id": "https://mymarketing.es/#website" },
+  "inLanguage": "es-ES",
+  "publisher": {
+    "@type": "Organization",
+    "name": "MyMarketing",
+    "@id": "https://mymarketing.es/#organization"
+  }
+}
+
 export const metadata: Metadata = {
   title: 'Blog — Consejos de marketing para profesionales',
   description:
@@ -18,12 +34,20 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: ['/og-blog.png'],
   },
+  alternates: {
+    canonical: 'https://mymarketing.es/blog',
+  },
 }
 
 export default async function BlogPage() {
   const posts = await getPosts()
 
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }}
+      />
     <div className="min-h-screen bg-white pt-24 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="text-center mb-12 sm:mb-16">
@@ -45,5 +69,6 @@ export default async function BlogPage() {
         )}
       </div>
     </div>
+    </>
   )
 }
