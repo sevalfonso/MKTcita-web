@@ -10,6 +10,7 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-plus-jakarta',
   display: 'swap',
+  preload: false,
 })
 
 const inter = Inter({
@@ -17,6 +18,7 @@ const inter = Inter({
   weight: ['400', '500'],
   variable: '--font-inter',
   display: 'swap',
+  preload: false,
 })
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mymarketing.es'
