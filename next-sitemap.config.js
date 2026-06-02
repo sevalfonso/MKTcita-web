@@ -5,7 +5,7 @@ module.exports = {
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 5000,
-  exclude: ['/aviso-legal', '/privacidad', '/cookies', '/terminos', '/dpa', '/api/*'],
+  exclude: ['/aviso-legal', '/privacidad', '/cookies', '/terminos', '/dpa', '/api/*', '/studio/*'],
   additionalPaths: async (config) => {
     // Añadir posts de Sanity al sitemap dinámicamente
     try {
