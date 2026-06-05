@@ -1,0 +1,2 @@
+Renombra este archivo a [INDEXNOW_KEY].txt donde INDEXNOW_KEY es el valor de tu variable de entorno INDEXNOW_KEY.
+El archivo debe estar en la raíz de /public para que Bing pueda verificar la propiedad del dominio.

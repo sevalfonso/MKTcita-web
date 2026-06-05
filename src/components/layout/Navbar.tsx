@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { Logo } from '../brand/Logo'
-import { X, Menu } from 'lucide-react'
+import { X, Menu, ChevronDown } from 'lucide-react'
 
 const NAV_LINKS = [
   { href: '#como-funciona',   label: 'Cómo funciona' },
@@ -12,9 +12,30 @@ const NAV_LINKS = [
   { href: '/sobre-nosotros',  label: 'Nosotros' },
 ]
 
+const SECTOR_LINKS = [
+  { href: '/para/peluqueria',   label: '✂️ Peluquería' },
+  { href: '/para/fisioterapia', label: '🦴 Fisioterapia' },
+  { href: '/para/dentista',     label: '🦷 Dentista' },
+  { href: '/para/estetica',     label: '✨ Estética' },
+  { href: '/para/psicologia',   label: '🧠 Psicología' },
+]
+
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
+  const [scrolled,        setScrolled]        = useState(false)
+  const [open,            setOpen]            = useState(false)
+  const [sectorDropdown,  setSectorDropdown]  = useState(false)
+  const dropdownRef = useRef<HTMLLIElement>(null)
+
+  // Cerrar dropdown al hacer clic fuera
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setSectorDropdown(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -52,6 +73,47 @@ export function Navbar() {
                 </Link>
               </li>
             ))}
+            {/* Dropdown "Para tu sector" */}
+            <li className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setSectorDropdown(v => !v)}
+                className="flex items-center gap-1 text-sm font-medium text-dark
+                           hover:text-brand-blue transition-colors"
+              >
+                Para tu sector
+                <ChevronDown
+                  size={14}
+                  className={`transition-transform ${sectorDropdown ? 'rotate-180' : ''}`}
+                />
+              </button>
+              {sectorDropdown && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52
+                                bg-white rounded-2xl shadow-lg border border-neutral-100
+                                py-2 z-50">
+                  {SECTOR_LINKS.map(s => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      onClick={() => setSectorDropdown(false)}
+                      className="block px-4 py-2.5 text-sm text-dark
+                                 hover:bg-neutral-50 hover:text-brand-blue transition-colors"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                  <div className="border-t border-neutral-100 mt-1 pt-1">
+                    <Link
+                      href="/para"
+                      onClick={() => setSectorDropdown(false)}
+                      className="block px-4 py-2.5 text-xs text-neutral-400
+                                 hover:bg-neutral-50 hover:text-brand-blue transition-colors"
+                    >
+                      Ver todos los sectores →
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </li>
           </ul>
 
           <div className="flex items-center gap-3">
@@ -96,6 +158,21 @@ export function Navbar() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <p className="px-4 pt-3 pb-1 text-xs font-semibold text-neutral-400 uppercase tracking-wide">
+                    Para tu sector
+                  </p>
+                  {SECTOR_LINKS.map(s => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      onClick={() => setOpen(false)}
+                      className="block py-2.5 px-4 rounded-xl text-sm font-medium text-dark hover:bg-neutral-50 transition-colors min-h-[44px] flex items-center"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                </li>
               </ul>
             </nav>
             <div className="mt-auto">
