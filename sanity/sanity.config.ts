@@ -1,10 +1,13 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
-import { post } from './schema/post'
+import { post }         from './schema/post'
 import { siteSettings } from './schema/siteSettings'
 import { blockContent } from './schema/blockContent'
 import { sectorLanding } from './schema/sectorLanding'
+// PA-013: nuevos tipos gestionados desde CMS
+import { testimonial }  from './schema/testimonial'
+import { pricingPlan }  from './schema/pricingPlan'
 
 export default defineConfig({
   name: 'mymarketing-web',
@@ -16,6 +19,6 @@ export default defineConfig({
     visionTool(),
   ],
   schema: {
-    types: [post, siteSettings, blockContent, sectorLanding],
+    types: [post, siteSettings, blockContent, sectorLanding, testimonial, pricingPlan],
   },
 })

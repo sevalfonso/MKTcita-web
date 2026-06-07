@@ -103,3 +103,72 @@ export async function getAllSlugs(): Promise<string[]> {
   )
   return posts.map((p: { slug: string }) => p.slug)
 }
+
+// ── PA-013: Testimonios desde Sanity CMS ──────────────────────────────────────
+
+export interface SanityTestimonial {
+  _id:         string
+  name:        string
+  role:        string
+  location:    string
+  avatarColor: string
+  quote:       string
+  order:       number
+}
+
+/**
+ * Obtiene testimonios desde Sanity CMS.
+ * Si no hay testimonios en CMS (tipo aún no creado), devuelve array vacío
+ * para que el componente use su fallback estático.
+ */
+export async function getTestimonials(): Promise<SanityTestimonial[]> {
+  if (!isSanityConfigured()) return []
+  try {
+    const results = await client.fetch(
+      `*[_type == "testimonial"] | order(order asc, _createdAt asc) {
+        _id, name, role, location, avatarColor, quote, order
+      }`,
+      {},
+      fetchOptions
+    )
+    return results ?? []
+  } catch {
+    return []
+  }
+}
+
+// ── PA-013: Planes de precios desde Sanity CMS ────────────────────────────────
+
+export interface SanityPricingPlan {
+  _id:        string
+  name:       string
+  price:      number         // precio en EUR/mes
+  yearlyPrice?: number       // precio anual opcional
+  description: string
+  features:   string[]
+  highlighted: boolean       // plan recomendado
+  ctaLabel:    string
+  order:       number
+}
+
+/**
+ * Obtiene los planes de precios desde Sanity CMS.
+ * Devuelve array vacío si el tipo aún no existe en CMS (fallback estático).
+ */
+export async function getPricingPlans(): Promise<SanityPricingPlan[]> {
+  if (!isSanityConfigured()) return []
+  try {
+    const results = await client.fetch(
+      `*[_type == "pricingPlan"] | order(order asc, price asc) {
+        _id, name, price, yearlyPrice, description,
+        "features": features[],
+        highlighted, ctaLabel, order
+      }`,
+      {},
+      fetchOptions
+    )
+    return results ?? []
+  } catch {
+    return []
+  }
+}
