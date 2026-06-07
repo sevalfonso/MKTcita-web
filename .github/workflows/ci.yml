@@ -19,22 +19,22 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      # Variables mínimas para CI
       - name: Create .env for CI
         run: |
-          cat <<'EOF' > .env.local
+          cat > .env.local << 'ENVEOF'
           NEXT_PUBLIC_SANITY_PROJECT_ID=placeholder
           NEXT_PUBLIC_SANITY_DATASET=production
           SANITY_API_TOKEN=placeholder
           NEXT_PUBLIC_SITE_URL=https://mymarketing.es
           SENTRY_DSN=
-          EOF
+          NEXT_PUBLIC_SENTRY_DSN=
+          ENVEOF
 
       - name: Lint
         run: npm run lint
