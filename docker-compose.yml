@@ -1,0 +1,20 @@
+# docker-compose.yml — mymarketing-web (desarrollo)
+services:
+  web:
+    build:
+      context: .
+      target: deps
+    image: mymarketing-web-dev
+    command: npm run dev
+    ports:
+      - "3001:3000"
+    env_file:
+      - .env.local
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    restart: unless-stopped

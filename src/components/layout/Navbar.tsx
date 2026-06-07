@@ -77,23 +77,33 @@ export function Navbar() {
             <li className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setSectorDropdown(v => !v)}
+                aria-haspopup="true"
+                aria-expanded={sectorDropdown}
+                aria-controls="sector-dropdown"
                 className="flex items-center gap-1 text-sm font-medium text-dark
                            hover:text-brand-blue transition-colors"
               >
                 Para tu sector
                 <ChevronDown
                   size={14}
+                  aria-hidden="true"
                   className={`transition-transform ${sectorDropdown ? 'rotate-180' : ''}`}
                 />
               </button>
               {sectorDropdown && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52
+                <div
+                  id="sector-dropdown"
+                  role="menu"
+                  aria-label="Sectores disponibles"
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-52
                                 bg-white rounded-2xl shadow-lg border border-neutral-100
-                                py-2 z-50">
+                                py-2 z-50"
+                >
                   {SECTOR_LINKS.map(s => (
                     <Link
                       key={s.href}
                       href={s.href}
+                      role="menuitem"
                       onClick={() => setSectorDropdown(false)}
                       className="block px-4 py-2.5 text-sm text-dark
                                  hover:bg-neutral-50 hover:text-brand-blue transition-colors"

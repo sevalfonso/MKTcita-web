@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // PA-016: output standalone para imagen Docker de producción mínima
+  output: 'standalone',
+
   images: {
     remotePatterns: [
       {
