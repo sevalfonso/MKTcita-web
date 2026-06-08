@@ -34,7 +34,8 @@ export default async function RefPage({ params }: Props) {
     maxAge:   30 * 24 * 60 * 60,  // 30 días
     sameSite: 'lax',
     secure:   process.env.NODE_ENV === 'production',
-    // domain: '.mymarketing.es',  // descomentar en producción para cross-subdomain
+    // Dominio raíz para que la cookie llegue a app.mymarketing.es
+    domain:   process.env.NODE_ENV === 'production' ? '.mymarketing.es' : undefined,
   })
 
   // 3. Redirigir al onboarding con el código en la URL (fallback si la cookie no llega)

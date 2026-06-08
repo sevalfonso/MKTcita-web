@@ -17,6 +17,49 @@ export const metadata: Metadata = {
   },
 }
 
+const faqs = [
+  {
+    q: '¿Hay permanencia o contrato?',
+    a: 'No. Puedes cancelar cuando quieras desde tu móvil, sin plazos de preaviso ni penalizaciones.',
+  },
+  {
+    q: '¿Necesito tarjeta para el trial?',
+    a: 'No. El trial de 15 días no requiere tarjeta de crédito. Solo te pedimos el pago si decides continuar con un plan de pago.',
+  },
+  {
+    q: '¿Puedo cambiar de plan en cualquier momento?',
+    a: 'Sí. Puedes cambiar entre planes Esencial y Pro cuando quieras. El cambio se aplica al siguiente período de facturación.',
+  },
+  {
+    q: '¿Hay descuento por pago anual?',
+    a: 'De momento solo ofrecemos facturación mensual. Escríbenos a hola@mymarketing.es si tienes una necesidad especial.',
+  },
+  {
+    q: '¿El WhatsApp tiene coste adicional?',
+    a: 'El envío de mensajes de WhatsApp consume créditos de la plataforma de mensajería (Meta). Los primeros 100 conversaciones al mes son gratuitas; a partir de ahí se cobra por conversación según las tarifas de Meta, que trasladamos sin margen. Te avisamos antes de alcanzar el límite.',
+  },
+  {
+    q: '¿Qué pasa cuando termina el trial de 15 días?',
+    a: 'Te avisamos por email 3 días antes. Si no introduces una tarjeta, el acceso se pausa automáticamente y tus datos se conservan 30 días por si decides volver.',
+  },
+  {
+    q: '¿Cuántos agentes IA incluye cada plan?',
+    a: 'El plan Esencial incluye 4 agentes activos: reservas (A1), reseñas (A2), blog SEO (A3) y recordatorios de vuelta (A6). El plan Pro desbloquea todos los agentes, incluyendo análisis profundo y canales adicionales.',
+  },
+  {
+    q: '¿Emite facturas con IVA para autónomos y empresas?',
+    a: 'Sí. Cada mes recibirás una factura en PDF con IVA al 21% válida para la deducción fiscal. Puedes descargarlas en cualquier momento desde tu panel.',
+  },
+  {
+    q: '¿Es compatible con Google Business Profile?',
+    a: 'Sí. MyMarketing se conecta a tu ficha de Google Business Profile para publicar contenido SEO, responder reseñas y mantener actualizada tu información sin que tengas que entrar en Google.',
+  },
+  {
+    q: '¿El soporte es en español?',
+    a: 'Sí, el equipo de soporte es español. Atendemos por email y chat en horario de lunes a viernes de 9:00 a 18:00.',
+  },
+]
+
 const schemaJsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -36,6 +79,14 @@ const schemaJsonLd = {
         { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://mymarketing.es' },
         { '@type': 'ListItem', position: 2, name: 'Precios', item: 'https://mymarketing.es/precios' },
       ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
     },
     {
       '@type': 'SoftwareApplication',
@@ -198,22 +249,12 @@ export default function PreciosPage() {
               Preguntas frecuentes
             </h2>
             <div className="space-y-4">
-              <div className="border border-neutral-100 rounded-2xl p-5">
-                <h3 className="font-semibold text-dark text-sm mb-2">¿Hay permanencia o contrato?</h3>
-                <p className="text-sm text-neutral-600">No. Puedes cancelar cuando quieras desde tu móvil, sin plazos de preaviso ni penalizaciones.</p>
-              </div>
-              <div className="border border-neutral-100 rounded-2xl p-5">
-                <h3 className="font-semibold text-dark text-sm mb-2">¿Necesito tarjeta para el trial?</h3>
-                <p className="text-sm text-neutral-600">No. El trial de 15 días no requiere tarjeta de crédito. Solo te pedimos el pago si decides continuar con un plan de pago.</p>
-              </div>
-              <div className="border border-neutral-100 rounded-2xl p-5">
-                <h3 className="font-semibold text-dark text-sm mb-2">¿Puedo cambiar de plan en cualquier momento?</h3>
-                <p className="text-sm text-neutral-600">Sí. Puedes cambiar entre planes Esencial y Pro cuando quieras. El cambio se aplica al siguiente período de facturación.</p>
-              </div>
-              <div className="border border-neutral-100 rounded-2xl p-5">
-                <h3 className="font-semibold text-dark text-sm mb-2">¿Hay descuento por pago anual?</h3>
-                <p className="text-sm text-neutral-600">De momento solo ofrecemos facturación mensual. Escríbenos a hola@mymarketing.es si tienes una necesidad especial.</p>
-              </div>
+              {faqs.map(({ q, a }) => (
+                <div key={q} className="border border-neutral-100 rounded-2xl p-5">
+                  <h3 className="font-semibold text-dark text-sm mb-2">{q}</h3>
+                  <p className="text-sm text-neutral-600">{a}</p>
+                </div>
+              ))}
             </div>
           </section>
 
