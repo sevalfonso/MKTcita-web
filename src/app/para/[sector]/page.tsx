@@ -61,11 +61,12 @@ export default async function SectorLandingPage({ params }: Props) {
   const subheadline = sanity?.subheadline ?? fallback.subheadline
   const painPoints  = sanity?.pain_points ?? fallback.painPoints
   const features    = sanity?.features    ?? fallback.features
+  const faqs        = sanity?.faqs        ?? fallback.faqs
   const testimonial = sanity?.testimonials?.[0] ?? fallback.testimonial
   const ctaText     = sanity?.cta_text    ?? fallback.ctaText
   const schemaName  = sanity?.schema_name ?? `MyMarketing para ${fallback.label}`
 
-  // Schema.org
+  // Schema.org — SoftwareApplication
   const schema = {
     '@context':          'https://schema.org',
     '@type':             'SoftwareApplication',
@@ -84,12 +85,32 @@ export default async function SectorLandingPage({ params }: Props) {
     featureList: features.map((f: { title: string }) => f.title),
   }
 
+  // Schema.org — FAQPage (rich snippets en Google)
+  const faqSchema = faqs?.length ? {
+    '@context': 'https://schema.org',
+    '@type':    'FAQPage',
+    mainEntity: faqs.map((faq: { question: string; answer: string }) => ({
+      '@type':          'Question',
+      name:             faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text:    faq.answer,
+      },
+    })),
+  } : null
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <div className="pt-20">
 
@@ -172,6 +193,23 @@ export default async function SectorLandingPage({ params }: Props) {
               <p className="text-sm text-neutral-500">
                 {(testimonial as { business: string }).business}
               </p>
+            </div>
+          </section>
+        )}
+
+        {/* FAQ */}
+        {faqs?.length > 0 && (
+          <section className="px-4 py-16 sm:py-20 max-w-3xl mx-auto">
+            <h2 className="font-heading font-bold text-2xl sm:text-3xl text-dark text-center mb-10">
+              Preguntas frecuentes
+            </h2>
+            <div className="flex flex-col gap-4">
+              {(faqs as Array<{ question: string; answer: string }>).map((faq, i) => (
+                <div key={i} className="rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm">
+                  <h3 className="font-semibold text-dark mb-2 text-sm sm:text-base">{faq.question}</h3>
+                  <p className="text-neutral-600 text-sm leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
             </div>
           </section>
         )}

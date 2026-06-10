@@ -140,7 +140,13 @@ const schemaJsonLd = {
   ],
 }
 
-export default function PreciosPage() {
+export default function PreciosPage({
+  searchParams,
+}: {
+  searchParams: { expired?: string }
+}) {
+  const trialExpired = searchParams.expired === 'true'
+
   return (
     <>
       <script
@@ -149,6 +155,26 @@ export default function PreciosPage() {
       />
       <main className="min-h-screen bg-white pt-24 pb-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
+
+          {/* Banner trial expirado — visible solo con ?expired=true */}
+          {trialExpired && (
+            <div className="mb-8 rounded-2xl bg-red-50 border border-red-200 px-6 py-5">
+              <p className="font-semibold text-red-800 text-base mb-1">
+                Tu prueba gratuita ha terminado
+              </p>
+              <p className="text-red-700 text-sm mb-4">
+                Tus datos están guardados. Elige un plan para recuperar el acceso
+                y seguir gestionando tus citas y posicionamiento online.
+              </p>
+              <a
+                href="https://app.mymarketing.es/settings"
+                className="inline-block rounded-xl bg-red-600 text-white text-sm font-semibold
+                           px-5 py-2.5 hover:bg-red-700 transition-colors"
+              >
+                Activar mi cuenta →
+              </a>
+            </div>
+          )}
 
           {/* Breadcrumb */}
           <nav aria-label="breadcrumb" className="text-sm text-neutral-400 mb-8 flex items-center gap-2">
@@ -183,7 +209,7 @@ export default function PreciosPage() {
               </ul>
               <Link
                 href="https://app.mymarketing.es/onboarding"
-                className="block text-center py-3 px-4 rounded-xl border border-brand-blue text-brand-blue font-medium hover:bg-brand-blue hover:text-white transition-colors text-sm"
+                className="plausible-event-name=cta_click plausible-event-props-plan=trial block text-center py-3 px-4 rounded-xl border border-brand-blue text-brand-blue font-medium hover:bg-brand-blue hover:text-white transition-colors text-sm"
               >
                 Empieza gratis
               </Link>
@@ -209,7 +235,7 @@ export default function PreciosPage() {
               </ul>
               <Link
                 href="https://app.mymarketing.es/onboarding"
-                className="block text-center py-3 px-4 rounded-xl bg-brand-blue text-white font-medium hover:bg-brand-blue/90 transition-colors text-sm"
+                className="plausible-event-name=cta_click plausible-event-props-plan=esencial block text-center py-3 px-4 rounded-xl bg-brand-blue text-white font-medium hover:bg-brand-blue/90 transition-colors text-sm"
               >
                 Empieza gratis
               </Link>
@@ -232,7 +258,7 @@ export default function PreciosPage() {
               </ul>
               <Link
                 href="https://app.mymarketing.es/onboarding"
-                className="block text-center py-3 px-4 rounded-xl border border-neutral-200 text-dark font-medium hover:border-brand-blue hover:text-brand-blue transition-colors text-sm"
+                className="plausible-event-name=cta_click plausible-event-props-plan=pro block text-center py-3 px-4 rounded-xl border border-neutral-200 text-dark font-medium hover:border-brand-blue hover:text-brand-blue transition-colors text-sm"
               >
                 Empieza gratis
               </Link>
