@@ -34,13 +34,13 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://plausible.io",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' data: https://fonts.gstatic.com",
               // Sanity CDN para imágenes del blog y CMS
               "img-src 'self' data: blob: https://cdn.sanity.io https:",
-              // Sanity API + Vercel
-              "connect-src 'self' https://*.sanity.io https://vercel.live",
+              // Sanity API + Vercel + Plausible eventos
+              "connect-src 'self' https://*.sanity.io https://vercel.live https://plausible.io",
               "frame-ancestors 'none'",
               "base-uri 'self'",
               "form-action 'self'",

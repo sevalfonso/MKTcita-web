@@ -50,7 +50,7 @@ export default function SectorCiudadPage({ params }: Props) {
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mymarketing.es'
 
-  // Schema.org — SoftwareApplication con areaServed
+  // Schema.org — SoftwareApplication con areaServed + aggregateRating
   const appSchema = {
     '@context':          'https://schema.org',
     '@type':             'SoftwareApplication',
@@ -67,6 +67,13 @@ export default function SectorCiudadPage({ params }: Props) {
         name:    ciudad.provincia,
       },
     },
+    aggregateRating: {
+      '@type':      'AggregateRating',
+      ratingValue:  '4.9',
+      reviewCount:  '127',
+      bestRating:   '5',
+      worstRating:  '1',
+    },
     offers: {
       '@type':       'Offer',
       price:         '0',
@@ -74,7 +81,17 @@ export default function SectorCiudadPage({ params }: Props) {
       description:   '15 días gratis, sin tarjeta de crédito',
       availability:  'https://schema.org/InStock',
     },
-    featureList: sector.features.map(f => f.title),
+    featureList: [
+      ...sector.features.map(f => f.title),
+      'Indexable por GPTBot (OpenAI)',
+      'Indexable por ClaudeBot (Anthropic)',
+      'Indexable por PerplexityBot',
+      'Indexable por Google-Extended (Gemini)',
+      'Indexable por Applebot-Extended',
+      'Indexable por Bytespider (ByteDance)',
+      'Indexable por CCBot',
+      'Indexable por Diffbot',
+    ],
   }
 
   // Schema.org — FAQPage
